@@ -29,13 +29,13 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === computerSelection) {
         return "Draw!";
-    } else if ((playerSelection === "Rock" && computerSelection === "Paper")
-                || (playerSelection === "Paper" && computerSelection === "Scissors")
-                || (playerSelection === "Scissors" && computerSelection === "Rock")) {
+    } else if ((playerSelection === "Rock" && computerSelection === "Paper") ||
+                (playerSelection === "Paper" && computerSelection === "Scissors") ||
+                (playerSelection === "Scissors" && computerSelection === "Rock")) {
         return `You Lose! ${computerSelection} beats ${playerSelection}.`;
-    } else if ((playerSelection === "Rock" && computerSelection === "Scissors")
-                || (playerSelection === "Paper" && computerSelection === "Rock")
-                || (playerSelection === "Scissors" && computerSelection === "Paper")) {
+    } else if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
+                (playerSelection === "Paper" && computerSelection === "Rock") ||
+                (playerSelection === "Scissors" && computerSelection === "Paper")) {
         return `You Win! ${playerSelection} beats ${computerSelection}.`;
     }
 }
