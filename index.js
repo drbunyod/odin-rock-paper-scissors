@@ -1,43 +1,47 @@
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt();
-        let result = playRound(playerSelection, getComputerChoice());
-
-        if (result.includes("Win")) {
-            playerScore++;
-        } else if (result.includes("Lose")) {
-            computerScore++;
-        }
-
-        console.log(result);
-    }
-
-    if (playerScore > computerScore) {
-        console.log(`YOU WIN! ${playerScore}-${computerScore}`);
-    } else if (playerScore < computerScore) {
-        console.log(`YOU LOSE! ${playerScore}-${computerScore}`);
-    } else {
-        console.log(`DRAW! ${playerScore}-${computerScore}`);
-    }
-}
-
 function playRound(playerSelection, computerSelection) {
     playerSelection = capitalize(playerSelection);
 
     if (playerSelection === computerSelection) {
-        return "Draw!";
+        console.log("Draw!");
     } else if ((playerSelection === "Rock" && computerSelection === "Paper") ||
                 (playerSelection === "Paper" && computerSelection === "Scissors") ||
                 (playerSelection === "Scissors" && computerSelection === "Rock")) {
-        return `You Lose! ${computerSelection} beats ${playerSelection}.`;
+        computerScore++;
+        console.log(`You Lose! ${computerSelection} beats ${playerSelection}.`);
     } else if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
                 (playerSelection === "Paper" && computerSelection === "Rock") ||
                 (playerSelection === "Scissors" && computerSelection === "Paper")) {
-        return `You Win! ${playerSelection} beats ${computerSelection}.`;
+        playerScore++;
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}.`);
     }
+
+    playerScoreBoard.textContent = playerScore;
+    computerScoreBoard.textContent = computerScore;
+
+    if (playerScore === 5 || computerScore === 5) {
+        endGame();
+    }
+}
+
+function endGame() {
+    // disable buttons
+    const allBtns = document.querySelectorAll("button");
+    allBtns.forEach(btn => {
+        btn.disabled = true;
+    });
+
+    // display winner
+    const winnerText = document.querySelector("#winner-text");
+    if (playerScore > computerScore) {
+        winnerText.textContent = `YOU WIN! ${playerScore}-${computerScore}`;
+    } else if (playerScore < computerScore) {
+        winnerText.textContent = `YOU LOSE! ${playerScore}-${computerScore}`;
+    } else {
+        winnerText.textContent = `DRAW! ${playerScore}-${computerScore}`;
+    }
+
+    const playAgainBtn = document.querySelector("#play-again-button");
+    playAgainBtn.classList.remove("hidden");
 }
 
 function getComputerChoice() {
@@ -50,4 +54,23 @@ function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-game();
+let playerScore = 0;
+let computerScore = 0;
+
+const playerScoreBoard = document.querySelector("#player-score");
+const computerScoreBoard = document.querySelector("#computer-score");
+
+const rockBtn = document.querySelector("#rock-button");
+rockBtn.addEventListener("click", () => {
+    playRound("Rock", getComputerChoice());
+});
+
+const paperBtn = document.querySelector("#paper-button");
+paperBtn.addEventListener("click", () => {
+    playRound("Rock", getComputerChoice());
+});
+
+const scissorsBtn = document.querySelector("#scissors-button");
+scissorsBtn.addEventListener("click", () => {
+    playRound("Scissors", getComputerChoice());
+});
