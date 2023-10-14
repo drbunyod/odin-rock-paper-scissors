@@ -1,18 +1,12 @@
 function playRound(playerSelection, computerSelection) {
-    playerSelection = capitalize(playerSelection);
-
-    if (playerSelection === computerSelection) {
-        console.log("Draw!");
-    } else if ((playerSelection === "Rock" && computerSelection === "Paper") ||
+    if ((playerSelection === "Rock" && computerSelection === "Paper") ||
                 (playerSelection === "Paper" && computerSelection === "Scissors") ||
                 (playerSelection === "Scissors" && computerSelection === "Rock")) {
         computerScore++;
-        console.log(`You Lose! ${computerSelection} beats ${playerSelection}.`);
     } else if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
                 (playerSelection === "Paper" && computerSelection === "Rock") ||
                 (playerSelection === "Scissors" && computerSelection === "Paper")) {
         playerScore++;
-        console.log(`You Win! ${playerSelection} beats ${computerSelection}.`);
     }
 
     playerScoreBoard.textContent = playerScore;
@@ -48,10 +42,6 @@ function getComputerChoice() {
     let options = ["Rock", "Paper", "Scissors"];
     let i = Math.floor(Math.random() * 3);
     return options[i];
-}
-
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
 let playerScore = 0;
