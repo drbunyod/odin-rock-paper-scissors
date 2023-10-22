@@ -8,28 +8,43 @@
 </head>
 <body>
     <div class="player">
-        <button id="rock-button" type="button">ROCK</button>
-        <button id="paper-button" type="button">PAPER</button>
-        <button id="scissors-button" type="button">SCISSORS</button>
+        <div class="board player-board">
+            <div id="player-choice">?</div>
+            <p id="player-choice-text">&nbsp;</p>
+            <div class="buttons">
+                <button id="rock-button" type="button">🪨</button>
+                <button id="paper-button" type="button">📄</button>
+                <button id="scissors-button" type="button">✂️</button>
+            </div>
+        </div>
 
         <div class="score player-score">
-            Player: <span id="player-score">0</span>
+            <div class="score-title">PLAYER</div>
+            <div class="score-value" id="player-score">0</div>
         </div>
     </div>
 
     <div class="computer">
-        <button id="rock-button" type="button">ROCK</button>
-        <button id="paper-button" type="button">PAPER</button>
-        <button id="scissors-button" type="button">SCISSORS</button>
+        <div class="board computer-board">
+            <div id="computer-choice">?</div>
+            <p id="computer-choice-text">&nbsp;</p>
+            <div class="buttons">
+                <button type="button">🪨</button>
+                <button type="button">📄</button>
+                <button type="button">✂️</button>
+            </div>
+        </div>
 
         <div class="score computer-score">
-            Computer: <span id="computer-score">0</span>
+            <div class="score-title">COMPUTER</div>
+            <div class="score-value" id="computer-score">0</div>
         </div>
     </div>
 
     <div class="winner">
-        <div id="winner-text"></div>
-        <a id="play-again-button" class="hidden" href="index.html">Play again</a>
+        <p id="winner-result"></p>
+        <p id="winner-score"></p>
+        <p><a href="index.html">Play again</a></p>
     </div>
 
     <script src="index.js"></script>
