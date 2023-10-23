@@ -27,6 +27,7 @@ function endGame() {
         btn.disabled = true;
     });
 
+    const winnerDiv = document.querySelector(".winner");
     const winnerResult = document.querySelector("#winner-result");
     const winnerScore = document.querySelector("#winner-score");
 
@@ -40,7 +41,7 @@ function endGame() {
 
     winnerScore.textContent = `${playerScore}-${computerScore}`;
 
-    document.querySelector(".winner").style.display = "flex";
+    winnerDiv.style.display = "flex";
 }
 
 function winnerAnimation(player, computer) {
@@ -78,9 +79,10 @@ function displayChoice(playerChoice, computerChoice) {
 }
 
 function getComputerChoice() {
-    let options = ["Rock", "Paper", "Scissors"];
-    let i = Math.floor(Math.random() * 3);
-    return options[i];
+    const choices = ["Rock", "Paper", "Scissors"];
+    const i = Math.floor(Math.random() * 3);
+    
+    return choices[i];
 }
 
 let playerScore = 0;
