@@ -150,7 +150,7 @@ button {
     font-size: 1.5em;
     text-decoration: none;
     text-transform: uppercase;
-    border: 2px solid #FFF;
+    border: 2px solid var(--winner-txt-color);
     border-radius: 10px;
 }
 
